@@ -6,7 +6,6 @@ import { ImageUpload } from "@/components/ui/image-upload";
 import { ThemeSelector } from "@/components/ui/theme-selector";
 import { useLanguage } from "@/lib/i18n";
 import { ProfileData, createProfileSchema } from "@/lib/schema";
-import { encodeProfileData } from "@/lib/url-state";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
@@ -32,8 +31,23 @@ export default function Home() {
   const useFormValues = watch();
 
   const onSubmit = async (data: ProfileData) => {
-    const encoded = encodeProfileData(data);
-    router.push(`/share?data=${encoded}`);
+    try {
+      const response = await fetch('/api/profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save profile');
+      }
+
+      const { id } = await response.json();
+      router.push(`/share/${id}`);
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      alert('Failed to save profile. Please try again.');
+    }
   };
 
   return (
