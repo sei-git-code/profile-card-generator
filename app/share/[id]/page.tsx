@@ -7,15 +7,15 @@ import { SocialButton } from "@/components/ui/social-button";
 import { useLanguage } from "@/lib/i18n";
 import { ProfileData } from "@/lib/schema";
 import {
-    Award,
-    Code2,
-    Edit,
-    Github,
-    Linkedin,
-    Mail,
-    Terminal,
-    Twitter,
-    User
+  Award,
+  Code2,
+  Edit,
+  Github,
+  Linkedin,
+  Mail,
+  Terminal,
+  Twitter,
+  User
 } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -186,16 +186,16 @@ export default function SharePage() {
           </div>
         </section>
 
-        <div className="text-center pt-8 pb-4">
+        <footer className="text-center text-xs text-slate-500">
+          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
+        </footer>
+
+        <div className="text-center pt-4 pb-4">
             <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/80 text-primary font-bold shadow-lg hover:bg-white transition-all">
                 <Edit className="w-4 h-4" />
                 {t.createOwn}
             </Link>
         </div>
-
-        <footer className="text-center text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved.</p>
-        </footer>
       </div>
     </main>
   );
