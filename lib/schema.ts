@@ -28,5 +28,5 @@ export const createProfileSchema = (t: any) => z.object({
   linkedin: z.string().optional(),
   email: z.string().email(t.errors.emailInvalid).optional().or(z.literal("")),
   image: z.string().optional(),
-  theme: z.enum(["sky", "sunset", "midnight", "forest", "cotton_candy", "lavender", "mint", "peach", "ocean", "pixel", "aurora"]).optional(),
+  theme: z.enum(["sky", "sunset", "midnight", "forest", "cotton_candy", "lavender", "mint", "peach", "ocean", "pixel", "aurora", "grid"]).optional(),
 });
