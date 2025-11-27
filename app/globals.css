@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
+@theme {
+  --font-sans: var(--font-outfit);
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
+  --color-border: var(--border);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --animate-aurora: gradient-animation 15s ease infinite;
+
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  --animate-scrolling-grid: scrolling-grid 0.92s linear infinite;
+
+  @keyframes scrolling-grid {
+    100% {
+      background-position: 50px 50px;
+    }
   }
 }
 
+:root {
+  /* Base Colors - Sky Theme */
+  --background: #e0f2fe; /* Sky 100 */
+  --foreground: #0f172a; /* Slate 900 */
+
+  /* Card Colors - White Glass */
+  --card: rgba(255, 255, 255, 0.7);
+  --card-foreground: #1e293b; /* Slate 800 */
+
+  /* Primary Brand Color (Sky Blue) */
+  --primary: #0ea5e9; /* Sky 500 */
+  --primary-foreground: #ffffff;
+
+  /* Secondary Color (Indigo) */
+  --secondary: #6366f1; /* Indigo 500 */
+  --secondary-foreground: #ffffff;
+
+  /* Muted/Subtle */
+  --muted: rgba(255, 255, 255, 0.5);
+  --muted-foreground: #64748b; /* Slate 500 */
+
+  /* Accent (Bright Blue) */
+  --accent: #38bdf8; /* Sky 400 */
+  --accent-foreground: #ffffff;
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.4);
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
